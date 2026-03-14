@@ -4,15 +4,12 @@
 
 ## Pre-requisites
 
-Before learning Terraform you should have:
-
 * Knowledge of at least one cloud platform
-
-  * AWS
-  * Azure
-  * GCP
-* A cloud account (AWS recommended for practice)
-* Terraform installed on your system
+* AWS
+* Azure
+* GCP
+* AWS Account
+* Terraform installed
 
 ---
 
