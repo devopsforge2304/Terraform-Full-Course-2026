@@ -1,15 +1,15 @@
----
-
 # Lecture 1 — Terraform Fundamentals
 
 ## Pre-requisites
 
-* Knowledge of at least one cloud platform
-* AWS
-* Azure
-* GCP
-* AWS Account
-* Terraform installed
+Before learning Terraform you should have:
+
+- Knowledge of at least one cloud platform
+  - AWS
+  - Azure
+  - GCP
+- A cloud account (AWS recommended for practice)
+- Terraform installed on your system
 
 ---
 
@@ -19,7 +19,7 @@ Terraform is an **open-source Infrastructure as Code (IaC) tool** created by **H
 
 Terraform allows you to **define, provision, and manage infrastructure using code**.
 
-Instead of manually creating resources from cloud consoles, Terraform lets you define infrastructure in configuration files and automatically creates those resources.
+Instead of manually creating resources using cloud consoles, Terraform lets you describe infrastructure in configuration files and automatically create those resources.
 
 ---
 
@@ -27,12 +27,12 @@ Instead of manually creating resources from cloud consoles, Terraform lets you d
 
 Examples include:
 
-* Virtual Machines
-* Networks
-* Databases
-* Load Balancers
-* Storage
-* Kubernetes Clusters
+- Virtual Machines
+- Networks
+- Databases
+- Load Balancers
+- Storage
+- Kubernetes Clusters
 
 ---
 
@@ -42,13 +42,325 @@ Terraform uses a declarative language called:
 
 **HCL — HashiCorp Configuration Language**
 
-### Example
+Example:
 
 ```hcl
 resource "aws_instance" "web" {
   ami           = "ami-123456"
   instance_type = "t2.micro"
 }
+```
+
+---
+
+# Terraform Core Principles
+
+Terraform performs three main operations:
+
+1. Builds a **resource dependency graph**
+2. Compares **desired state vs current state**
+3. Applies changes to reach the **desired state**
+
+---
+
+# How Terraform Works
+
+Terraform uses a **Declarative Model**.
+
+Declarative means you describe **WHAT infrastructure should exist**, not **HOW to create it**.
+
+Instead of writing steps like:
+
+```
+Step 1: Create VPC
+Step 2: Wait
+Step 3: Create Subnet
+Step 4: Create Instance
+```
+
+You simply declare:
+
+```
+I want a VPC
+I want a subnet inside that VPC
+I want an instance in that subnet
+```
+
+Terraform automatically determines the correct order.
+
+---
+
+# Declarative vs Imperative
+
+## Imperative Model
+
+```
+Script
+Step1 → Step2 → Step3 → Step4
+```
+
+Examples:
+
+- Bash scripts
+- Ansible playbooks
+- CLI scripts
+
+---
+
+## Declarative Model (Terraform)
+
+```
+Desired State
+     ↓
+Terraform Engine
+     ↓
+Execution Plan
+     ↓
+Infrastructure
+```
+
+---
+
+# Terraform Execution Flow
+
+Terraform works in three phases:
+
+```
+Write Code → Plan → Apply
+```
+
+---
+
+# Terraform Internal Workflow
+
+```
+Terraform Configuration
+        ↓
+Parse Configuration
+        ↓
+Build Dependency Graph
+        ↓
+Compare Desired vs Current State
+        ↓
+Generate Execution Plan
+        ↓
+Provider Plugins Call Cloud APIs
+        ↓
+Infrastructure Created
+```
+
+---
+
+# Terraform API Communication
+
+Terraform interacts with cloud providers through APIs.
+
+```
+Terraform
+   ↓
+Provider Plugin
+   ↓
+Cloud API
+   ↓
+Infrastructure Created
+```
+
+---
+
+# Terraform Dependency Graph
+
+Terraform internally converts configuration into a **Directed Acyclic Graph (DAG)**.
+
+Example:
+
+```
+aws_vpc.main
+     │
+     ▼
+aws_subnet.app
+     │
+     ▼
+aws_instance.web
+```
+
+Terraform understands:
+
+- VPC must be created first
+- Subnet depends on VPC
+- Instance depends on Subnet
+
+---
+
+# Parallel Execution Example
+
+If resources have no dependencies, Terraform runs them in parallel.
+
+```
+        Terraform
+       /    |    \
+      ▼     ▼     ▼
+     VPC   IAM   S3
+```
+
+This parallel execution makes Terraform very fast.
+
+---
+
+# Why We Use Terraform
+
+## 1. Infrastructure Automation
+
+Without Terraform:
+
+- Login to console
+- Create VPC
+- Create subnet
+- Create instance
+
+Manual process = slow and error-prone.
+
+With Terraform everything is automated.
+
+---
+
+## 2. Infrastructure Consistency
+
+Without IaC:
+
+```
+Dev → different configuration
+Staging → different configuration
+Production → different configuration
+```
+
+With Terraform:
+
+```
+Same Code → Same Infrastructure
+```
+
+---
+
+## 3. Version Control
+
+Terraform code can be stored in Git repositories.
+
+Benefits:
+
+- Track infrastructure changes
+- Audit infrastructure
+- Rollback mistakes
+
+---
+
+## 4. Reproducibility
+
+Infrastructure can be recreated anytime.
+
+```
+Delete infrastructure
+Run terraform apply
+Infrastructure recreated exactly the same
+```
+
+---
+
+## 5. Scalability
+
+Example:
+
+```hcl
+resource "aws_instance" "web" {
+  count = 10
+}
+```
+
+Terraform automatically creates **10 servers**.
+
+---
+
+## 6. Multi-Cloud Management
+
+Example:
+
+```
+AWS → compute
+Azure → storage
+GCP → analytics
+```
+
+All managed using a single tool.
+
+---
+
+# When We Use Terraform
+
+## Real World Use Cases
+
+### Cloud Infrastructure Provisioning
+
+Terraform deploys:
+
+- AWS infrastructure
+- Azure infrastructure
+- GCP infrastructure
+
+### DevOps Automation
+
+Example pipeline:
+
+```
+Code Commit
+     ↓
+Build Application
+     ↓
+Provision Infrastructure
+     ↓
+Deploy Application
+```
+
+### Multi-Environment Setup
+
+Companies maintain environments:
+
+- Development
+- Staging
+- Production
+
+Terraform ensures consistency.
+
+### Disaster Recovery
+
+```
+Region failure
+     ↓
+Run Terraform
+     ↓
+Infrastructure recreated in another region
+```
+
+### Large-Scale Infrastructure
+
+Terraform helps manage thousands of resources such as:
+
+- Networks
+- Databases
+- Servers
+- Kubernetes clusters
+- Security policies
+
+### Platform Engineering
+
+Developers request infrastructure → Terraform provisions it automatically.
+
+### Infrastructure Standardization
+
+Reusable modules:
+
+- VPC module
+- EKS module
+- Database module
+- Security module}
 ```
 
 ---
