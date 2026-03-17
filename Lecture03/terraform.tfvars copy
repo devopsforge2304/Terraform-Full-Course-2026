@@ -1,0 +1,12 @@
+environment = "dev"
+
+server_names = [
+  "web-server",
+  "api-server",
+]
+
+common_tags = {
+  Project     = "terraform-demo"
+  Owner       = "devops-team"
+  Environment = "dev"
+}
