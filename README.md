@@ -220,7 +220,7 @@ Prevents multiple users from modifying infrastructure simultaneously.
 
 ---
 
-# 9. Terraform Modules (Code Reusability)
+# 8. Terraform Modules (Code Reusability)
 
 Modules allow **reusable and maintainable Terraform code**.
 
@@ -238,7 +238,7 @@ Modules allow **reusable and maintainable Terraform code**.
 
 ---
 
-# 10. Environment Management
+# 9. Environment Management
 
 Managing multiple infrastructure environments.
 
@@ -256,7 +256,7 @@ Managing multiple infrastructure environments.
 
 ---
 
-# 11. Terraform Security
+# 10. Terraform Security
 
 Security is critical when managing infrastructure with Terraform.
 
@@ -278,7 +278,7 @@ Examples:
 
 ---
 
-# 12. Terraform Lifecycle Rules
+# 11. Terraform Lifecycle Rules
 
 Lifecycle settings control how Terraform manages resources.
 
@@ -298,7 +298,7 @@ Lifecycle settings control how Terraform manages resources.
 
 ---
 
-# 13. Terraform Provisioners
+# 12. Terraform Provisioners
 
 Provisioners allow execution of scripts during resource creation.
 
@@ -314,7 +314,7 @@ Provisioners are considered an **anti-pattern** and should be avoided when possi
 
 ---
 
-# 14. Terraform Testing and Validation
+# 13. Terraform Testing and Validation
 
 Ensuring Terraform configurations are correct and secure.
 
@@ -338,7 +338,7 @@ Ensuring Terraform configurations are correct and secure.
 
 ---
 
-# 15. Debugging & Troubleshooting
+# 14. Debugging & Troubleshooting
 
 Techniques to debug Terraform issues.
 
@@ -353,19 +353,6 @@ TF_LOG=DEBUG terraform apply
 * Investigate provider errors
 * Resolve state conflicts
 * Recover from failed applies
-
----
-
-# 16. Performance & Scaling
-
-Best practices for managing **large Terraform infrastructures**.
-
-### Topics Covered
-
-* Structuring large infrastructure projects
-* Splitting Terraform states
-* Optimizing module usage
-* Tuning Terraform parallelism
 
 ---
 
