@@ -176,7 +176,7 @@ Terraform internally builds a **resource dependency graph** to determine executi
 
 ---
 
-# 7. Terraform State (The Core Engine)
+# 7. Terraform State | Remote State & Backend Configuration
 
 Terraform state is the **central component that tracks infrastructure resources**.
 
@@ -199,9 +199,7 @@ Terraform state is the **central component that tracks infrastructure resources*
 * `terraform state mv`
 * `terraform state rm`
 
----
-
-# 8. Remote State & Backend Configuration
+### Remote Backend
 
 Using **remote backends** is essential for team collaboration.
 
