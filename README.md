@@ -256,7 +256,7 @@ Managing multiple infrastructure environments.
 
 ---
 
-# 10. Terraform Security
+# 10. Terraform Security, Testing and Validation
 
 Security is critical when managing infrastructure with Terraform.
 
@@ -275,6 +275,28 @@ Examples:
 
 * Avoid storing secrets in state files
 * Use secure backend encryption
+
+### Terraform Testing and Validation
+
+Ensuring Terraform configurations are correct and secure.
+
+### Tools
+
+* **terraform fmt**
+
+  * Code formatting
+
+* **terraform validate**
+
+  * Configuration validation
+
+* **tflint**
+
+  * Linting Terraform code
+
+* **checkov**
+
+  * Infrastructure security scanning
 
 ---
 
@@ -310,35 +332,11 @@ Provisioners allow execution of scripts during resource creation.
 
 ### Important Note
 
-Provisioners are considered an **anti-pattern** and should be avoided when possible.
+Provisioners are considered an **anti-pattern** and should be avoided when possible. 
 
 ---
 
-# 13. Terraform Testing and Validation
-
-Ensuring Terraform configurations are correct and secure.
-
-### Tools
-
-* **terraform fmt**
-
-  * Code formatting
-
-* **terraform validate**
-
-  * Configuration validation
-
-* **tflint**
-
-  * Linting Terraform code
-
-* **checkov**
-
-  * Infrastructure security scanning
-
----
-
-# 14. Debugging & Troubleshooting
+# 13. Debugging & Troubleshooting
 
 Techniques to debug Terraform issues.
 
