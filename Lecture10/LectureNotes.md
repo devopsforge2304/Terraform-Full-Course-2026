@@ -316,3 +316,9 @@ This ensures:
 * provider correctness
 * security compliance
 * safe infrastructure deployment
+
+
+FAQ's :
+
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret
+https://www.checkov.io/1.Welcome/What%20is%20Checkov.html
