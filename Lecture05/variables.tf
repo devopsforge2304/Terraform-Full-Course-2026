@@ -1,7 +1,7 @@
 variable "aws_region" {
-    type = string
-    default = "us-east-1"
-  
+  type    = string
+  default = "us-east-1"
+
 }
 
 variable "environment" {
@@ -9,32 +9,32 @@ variable "environment" {
 }
 
 variable "instance_type_map" {
-    type = map(string)
+  type = map(string)
 
-    default = {
-      dev = "t3.micro"
-      prod = "t3.large"
-    }
-  
+  default = {
+    dev  = "f3.micro"
+    prod = "t3.large"
+  }
+
 }
 
 variable "subnet_cidr" {
-    type = string
-    default = "10.0.0.0/16"
-  
+  type    = string
+  default = "10.0.0.0/16"
+
 }
 
 variable "server_names" {
-    type = list(string)
+  type = list(string)
 }
 
 variable "common_tags" {
-    type = map(string)
-  
+  type = map(string)
+
 }
 
 variable "allowed_ports" {
 
-    type = list(number)
-  
+  type = list(number)
+
 }
